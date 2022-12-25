@@ -1,0 +1,24 @@
+<div>
+  <h1>My Todo List</h1>
+  <form>
+    <input
+      type="text"
+      [(ngModel)]="title"
+      placeholder="Add a new todo"
+      name="title"
+      required
+    />
+    <button (click)="addTodo()" type="submit">Add</button>
+  </form>
+  <ul>
+    <li class="todo" *ngFor="let todo of todos">
+      <span
+        (click)="toggleStatus(todo)"
+        [ngClass]="{ done: todo.isCompleted }"
+        >{{ todo.title }}</span
+      >
+      <button (click)="deleteTodo(todo)">Delete</button>
+    </li>
+  </ul>
+  <p *ngIf="!todos[0]">Add item to todo list...</p>
+</div>
